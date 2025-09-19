@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("jdup website loaded.");
+    Chart.register(ChartDataLabels);
+
+    // --- Header Scroll Effect ---
+    const mainHeader = document.querySelector('#page-top');
+    const headerScrollThreshold = 50; // Pixels scrolled before effect activates
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > headerScrollThreshold) {
+            mainHeader.classList.add('scrolled');
+        } else {
+            mainHeader.classList.remove('scrolled');
+        }
+    });
 
     // --- 네비게이션 메뉴 관련 코드 ---
     const navToggle = document.querySelector('.nav-toggle');
@@ -119,8 +132,16 @@ document.addEventListener('DOMContentLoaded', function() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        top: 20 // Increased top padding to create space between legend and chart
+                    }
+                },
                 plugins: {
-                    legend: { position: 'top' },
+                    legend: { 
+                        position: 'top',
+                        padding: 10 // Add padding around the legend block
+                    },
                     tooltip: {
                         callbacks: {
                             label: function(context) {
@@ -132,13 +153,28 @@ document.addEventListener('DOMContentLoaded', function() {
                                 return label;
                             }
                         }
+                    },
+                    datalabels: { // Datalabels plugin configuration
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value, context) => {
+                            const label = context.chart.data.labels[context.dataIndex];
+                            if (label === '업무 효율성') {
+                                return value + '%';
+                            } else if (label === '수작업 비용') {
+                                return value + '만원';
+                            }
+                            return value;
+                        },
+                        color: '#333',
+                        font: { weight: 'bold' }
                     }
                 },
                 scales: {
                     y: {
                         beginAtZero: true,
                         max: 100,
-                        ticks: { callback: function(value) { return value + ' (단위: %, 만원)'; } }
+                        ticks: { callback: function(value) { return value; } } // Removed unit from y-axis ticks
                     }
                 }
             }
@@ -155,8 +191,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!bounds) bounds = card.getBoundingClientRect();
             const centerX = bounds.left + bounds.width / 2;
             const centerY = bounds.top + bounds.height / 2;
-            const rotateX = (e.clientY - centerY) / 15; // Adjust divisor for tilt intensity
-            const rotateY = (centerX - e.clientX) / 15; // Adjust divisor for tilt intensity
+            const rotateX = (e.clientY - centerY) / 30; // Adjust divisor for tilt intensity
+            const rotateY = (centerX - e.clientX) / 30; // Adjust divisor for tilt intensity
 
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         }

@@ -142,6 +142,11 @@ header#page-top {
     transition: all 0.3s ease;
 }
 
+header#page-top.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
 header .container {
     display: flex;
     justify-content: space-between;
@@ -302,11 +307,12 @@ section {
 }
 
 /* --- Performance Chart --- */
-.chart-container.glass-card {
-    margin-top: 3rem;
-    padding: 2rem;
-    height: 450px;
-}
+    .chart-container.glass-card {
+        margin-top: 3rem;
+        padding: 2rem;
+        height: 300px; /* Adjusted height for mobile */
+        max-width: 100%; /* Ensure it takes full width */
+    }
 
 /* --- Buttons --- */
 .contact-button, .submit-button {
@@ -435,7 +441,7 @@ footer {
         top: calc(100% + 10px);
         left: 0;
         width: 100%;
-        background: rgba(255, 255, 255, 0.95); /* More opaque background */
+        background: rgba(255, 255, 255, 1); /* Fully opaque white */
         border: 1px solid var(--glass-border);
         border-radius: var(--border-radius);
         box-shadow: 0 8px 32px 0 var(--shadow-color);
