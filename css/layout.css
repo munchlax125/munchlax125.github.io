@@ -36,7 +36,8 @@ header .container {
 }
 
 .logo-icon {
-    height: 1.5em; /* Match font size */
+    height: 24px; /* Set a fixed, predictable height */
+    width: auto;  /* Maintain aspect ratio */
     margin-right: 0.5em;
 }
 
