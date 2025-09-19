@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("jdup website loaded.");
+    lucide.createIcons(); // Render Lucide icons
     Chart.register(ChartDataLabels);
 
     // --- Header Scroll Effect ---
@@ -108,10 +109,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- 성과 그래프 관련 코드 ---
+    // --- 성과 그래프 관련 코드 - 모바일 반응형 개선 ---
     const performanceChartCtx = document.getElementById('performanceChart');
     if (performanceChartCtx) {
-        new Chart(performanceChartCtx, {
+        // 화면 크기 확인 함수
+        const isMobile = () => window.innerWidth <= 768;
+        const isSmallMobile = () => window.innerWidth <= 480;
+        
+        // 반응형 설정 함수
+        const getResponsiveSettings = () => {
+            if (isSmallMobile()) {
+                return {
+                    legendPosition: 'top',
+                    legendPadding: 15,
+                    layoutPadding: 30,
+                    fontSize: 10,
+                    datalabelOffset: 8,
+                    barThickness: 40
+                };
+            } else if (isMobile()) {
+                return {
+                    legendPosition: 'top',
+                    legendPadding: 12,
+                    layoutPadding: 25,
+                    fontSize: 11,
+                    datalabelOffset: 10,
+                    barThickness: 50
+                };
+            } else {
+                return {
+                    legendPosition: 'top',
+                    legendPadding: 10,
+                    layoutPadding: 20,
+                    fontSize: 12,
+                    datalabelOffset: 12,
+                    barThickness: 60
+                };
+            }
+        };
+        
+        const settings = getResponsiveSettings();
+        
+        const chart = new Chart(performanceChartCtx, {
             type: 'bar',
             data: {
                 labels: ['업무 효율성', '수작업 비용'],
@@ -120,13 +159,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     data: [40, 85],
                     backgroundColor: 'rgba(255, 99, 132, 0.5)',
                     borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
+                    borderWidth: 1,
+                    maxBarThickness: settings.barThickness
                 }, {
                     label: 'jdup 도입 후',
                     data: [95, 15],
                     backgroundColor: 'rgba(54, 162, 235, 0.5)',
                     borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
+                    borderWidth: 1,
+                    maxBarThickness: settings.barThickness
                 }]
             },
             options: {
@@ -134,13 +175,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 maintainAspectRatio: false,
                 layout: {
                     padding: {
-                        top: 20 // Increased top padding to create space between legend and chart
+                        top: settings.layoutPadding,
+                        bottom: 10,
+                        left: isMobile() ? 5 : 10,
+                        right: isMobile() ? 5 : 10
                     }
                 },
                 plugins: {
                     legend: { 
-                        position: 'top',
-                        padding: 10 // Add padding around the legend block
+                        position: settings.legendPosition,
+                        labels: {
+                            padding: settings.legendPadding,
+                            font: {
+                                size: settings.fontSize
+                            },
+                            usePointStyle: true,
+                            pointStyle: 'rect'
+                        }
                     },
                     tooltip: {
                         callbacks: {
@@ -154,9 +205,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         }
                     },
-                    datalabels: { // Datalabels plugin configuration
+                    datalabels: {
                         anchor: 'end',
                         align: 'top',
+                        offset: settings.datalabelOffset,
                         formatter: (value, context) => {
                             const label = context.chart.data.labels[context.dataIndex];
                             if (label === '업무 효율성') {
@@ -167,17 +219,68 @@ document.addEventListener('DOMContentLoaded', function() {
                             return value;
                         },
                         color: '#333',
-                        font: { weight: 'bold' }
+                        font: { 
+                            weight: 'bold',
+                            size: settings.fontSize
+                        },
+                        // 모바일에서 레이블이 차트 영역을 벗어나지 않도록 조정
+                        clip: false
                     }
                 },
                 scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: settings.fontSize
+                            },
+                            maxRotation: isMobile() ? 0 : 0 // 모바일에서 레이블 회전 방지
+                        }
+                    },
                     y: {
                         beginAtZero: true,
                         max: 100,
-                        ticks: { callback: function(value) { return value; } } // Removed unit from y-axis ticks
+                        ticks: { 
+                            font: {
+                                size: settings.fontSize
+                            },
+                            callback: function(value) { 
+                                return value; 
+                            }
+                        }
+                    }
+                },
+                // 모바일에서 차트 영역 조정
+                elements: {
+                    bar: {
+                        borderRadius: isMobile() ? 2 : 4
                     }
                 }
             }
+        });
+        
+        // 윈도우 리사이즈 시 차트 업데이트
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                const newSettings = getResponsiveSettings();
+                
+                // 차트 옵션 업데이트
+                chart.options.layout.padding.top = newSettings.layoutPadding;
+                chart.options.plugins.legend.labels.padding = newSettings.legendPadding;
+                chart.options.plugins.legend.labels.font.size = newSettings.fontSize;
+                chart.options.plugins.datalabels.offset = newSettings.datalabelOffset;
+                chart.options.plugins.datalabels.font.size = newSettings.fontSize;
+                chart.options.scales.x.ticks.font.size = newSettings.fontSize;
+                chart.options.scales.y.ticks.font.size = newSettings.fontSize;
+                
+                // 바 두께 업데이트
+                chart.data.datasets.forEach(dataset => {
+                    dataset.maxBarThickness = newSettings.barThickness;
+                });
+                
+                chart.update('resize');
+            }, 250);
         });
     }
 
@@ -191,8 +294,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!bounds) bounds = card.getBoundingClientRect();
             const centerX = bounds.left + bounds.width / 2;
             const centerY = bounds.top + bounds.height / 2;
-            const rotateX = (e.clientY - centerY) / 30; // Adjust divisor for tilt intensity
-            const rotateY = (centerX - e.clientX) / 30; // Adjust divisor for tilt intensity
+            const rotateX = (e.clientY - centerY) / 50; // Adjust divisor for tilt intensity
+            const rotateY = (centerX - e.clientX) / 50; // Adjust divisor for tilt intensity
 
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         }
@@ -229,4 +332,26 @@ document.addEventListener('DOMContentLoaded', function() {
     revealElements.forEach(el => {
         observer.observe(el);
     });
+
+    // --- Vision Modal ---
+    const visionModal = document.getElementById('vision-modal');
+    const openVisionModalBtn = document.getElementById('open-vision-modal');
+    const closeVisionModalBtn = visionModal.querySelector('.vision-close');
+
+    if (visionModal && openVisionModalBtn && closeVisionModalBtn) {
+        openVisionModalBtn.addEventListener('click', () => { visionModal.style.display = 'flex'; });
+        closeVisionModalBtn.addEventListener('click', () => { visionModal.style.display = 'none'; });
+        window.addEventListener('click', (e) => { if (e.target == visionModal) { visionModal.style.display = 'none'; } });
+    }
+
+    // --- Values Modal ---
+    const valuesModal = document.getElementById('values-modal');
+    const openValuesModalBtn = document.getElementById('open-values-modal');
+    const closeValuesModalBtn = valuesModal.querySelector('.values-close');
+
+    if (valuesModal && openValuesModalBtn && closeValuesModalBtn) {
+        openValuesModalBtn.addEventListener('click', () => { valuesModal.style.display = 'flex'; });
+        closeValuesModalBtn.addEventListener('click', () => { valuesModal.style.display = 'none'; });
+        window.addEventListener('click', (e) => { if (e.target == valuesModal) { valuesModal.style.display = 'none'; } });
+    }
 });

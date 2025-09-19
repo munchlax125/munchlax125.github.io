@@ -1,0 +1,125 @@
+/* --- Header --- */
+header#page-top {
+    position: fixed;
+    width: 95%;
+    max-width: 1200px;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+header#page-top.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+header .nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header .nav li {
+    margin-left: 25px;
+}
+
+header .nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+header .nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--highlight-color);
+    transition: width 0.3s ease;
+}
+
+header .nav a:hover {
+    color: var(--text-primary);
+}
+
+header .nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Mobile Navigation --- */
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 0.5em;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    width: 1.5em;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: transform 250ms ease-in-out;
+}
+
+.hamburger::before, .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 250ms ease-in-out;
+}
+
+.hamburger::before { top: -6px; }
+.hamburger::after { bottom: -6px; }
+
+/* --- Sections --- */
+main {
+    padding-top: 120px;
+}
+section {
+    padding: 4rem 0;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+}
+
+/* --- About Section Cards --- */
+.about-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
