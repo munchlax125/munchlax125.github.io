@@ -28,6 +28,18 @@ header .container {
     font-weight: 700;
 }
 
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-icon {
+    height: 1.5em; /* Match font size */
+    margin-right: 0.5em;
+}
+
 header .nav ul {
     list-style: none;
     display: flex;
