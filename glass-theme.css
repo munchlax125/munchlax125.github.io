@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+:root {
+    --text-primary: #111;
+    --text-secondary: #444;
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --blur-amount: 12px;
+    --border-radius: 18px;
+    --highlight-color: #6a5af9;
+    --shadow-color: rgba(31, 38, 135, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+    background-color: #F0F4F8;
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animated Mesh Gradient Background */
+body::before {
+    content: '';
+    position: fixed;
+    z-index: -2;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffadad, transparent 50%);
+    transform: translate(-80%, -60%);
+    filter: blur(150px);
+    opacity: 0.6;
+    animation: move-glow1 30s cubic-bezier(0.25, 0.1, 0.25, 1) infinite alternate;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    z-index: -2;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #a0c4ff, transparent 50%);
+    transform: translate(80%, 60%);
+    filter: blur(150px);
+    opacity: 0.6;
+    animation: move-glow2 30s cubic-bezier(0.25, 0.1, 0.25, 1) infinite alternate;
+}
+
+@keyframes move-glow1 {
+    to { transform: translate(20%, 20%); }
+}
+@keyframes move-glow2 {
+    to { transform: translate(-20%, -20%); }
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1100px;
+}
+
+/* --- Glassmorphism Card Style --- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+    transform-style: preserve-3d;
+    transition: box-shadow 0.4s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 12px 45px 0 rgba(31, 38, 135, 0.2);
+}
+
+.glass-header {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+section p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.8;
+}
+
+#contact .container {
+    text-align: center;
+}
+
+/* --- Header --- */
+header#page-top {
+    position: fixed;
+    width: 95%;
+    max-width: 1200px;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+header .nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header .nav li {
+    margin-left: 25px;
+}
+
+header .nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+header .nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--highlight-color);
+    transition: width 0.3s ease;
+}
+
+header .nav a:hover {
+    color: var(--text-primary);
+}
+
+header .nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Mobile Navigation --- */
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 0.5em;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    width: 1.5em;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: transform 250ms ease-in-out;
+}
+
+.hamburger::before, .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 250ms ease-in-out;
+}
+
+.hamburger::before { top: -6px; }
+.hamburger::after { bottom: -6px; }
+
+/* --- Sections --- */
+main {
+    padding-top: 120px;
+}
+section {
+    padding: 4rem 0;
+}
+
+/* --- Service Accordion --- */
+.accordion {
+    max-width: 800px;
+    margin: 2rem auto 0;
+}
+
+.accordion-item {
+    margin-bottom: 1rem;
+    border: none; /* Remove border from item, card has it */
+}
+
+.accordion-header {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.service-icon {
+    margin-right: 1rem;
+    color: var(--highlight-color);
+}
+
+.accordion-header::after {
+    content: '+';
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--highlight-color);
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active::after {
+    content: '−';
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    padding: 0 1.5rem;
+}
+
+.accordion-content p {
+    padding: 1rem 0 1.5rem;
+    text-align: left;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.service-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* --- Performance Chart --- */
+.chart-container.glass-card {
+    margin-top: 3rem;
+    padding: 2rem;
+    height: 450px;
+}
+
+/* --- Buttons --- */
+.contact-button, .submit-button {
+    display: inline-block;
+    background: var(--highlight-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 0.9rem 1.8rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(106, 90, 249, 0.3);
+}
+.contact-button:hover, .submit-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(106, 90, 249, 0.4);
+}
+
+/* --- Modals --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(240, 244, 248, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    padding: 2rem 2.5rem;
+    color: var(--text-primary);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    /* Glassmorphism styles */
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
+.privacy-content {
+    max-height: 70vh; /* Adjust as needed */
+    overflow-y: auto;
+    padding-right: 15px; /* To prevent scrollbar from overlapping content */
+}
+
+.close-button {
+    color: #888;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 32px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+.close-button:hover, .close-button:focus {
+    color: var(--text-primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#contact-form .form-group { margin-bottom: 1.2rem; }
+#contact-form label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+#contact-form input, #contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.7);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+#contact-form input:focus, #contact-form textarea:focus {
+    outline: none;
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 0 3px rgba(106, 90, 249, 0.2);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+}
+.footer-button {
+    background: none; border: none; color: var(--highlight-color);
+    text-decoration: underline; cursor: pointer; font-size: inherit;
+}
+
+/* --- Animations --- */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    h2 { font-size: 2.2rem; }
+    header#page-top { padding: 1rem; width: 90%; }
+    .nav-toggle { display: block; }
+
+    .nav {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        width: 100%;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--border-radius);
+        box-shadow: 0 8px 32px 0 var(--shadow-color);
+        transform: translateY(-10px);
+        transition: all 250ms ease-in-out;
+    }
+
+    header.nav-open .nav {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+    }
+
+    .nav li {
+        margin: 1rem 0;
+        margin-left: 0;
+    }
+
+    /* Hamburger to X animation */
+    header.nav-open .hamburger {
+        transform: rotate(135deg);
+    }
+    header.nav-open .hamburger::before {
+        top: 0;
+        transform: rotate(-90deg);
+    }
+    header.nav-open .hamburger::after {
+        opacity: 0;
+    }
+}
