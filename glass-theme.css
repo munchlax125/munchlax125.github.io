@@ -435,7 +435,7 @@ footer {
         top: calc(100% + 10px);
         left: 0;
         width: 100%;
-        background: var(--glass-bg);
+        background: rgba(255, 255, 255, 0.95); /* More opaque background */
         border: 1px solid var(--glass-border);
         border-radius: var(--border-radius);
         box-shadow: 0 8px 32px 0 var(--shadow-color);
@@ -447,6 +447,10 @@ footer {
         visibility: visible;
         opacity: 1;
         transform: translateY(0);
+    }
+
+    header .nav a {
+        text-align: center;
     }
 
     .nav ul {
