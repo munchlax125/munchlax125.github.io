@@ -45,6 +45,30 @@ section p {
     line-height: 1.8;
 }
 
+/* Home section specific styles */
+.home-subtitle {
+    font-size: 1.4rem !important;
+    font-weight: 600 !important;
+    color: var(--highlight-color) !important;
+    margin-bottom: 1rem !important;
+}
+
+.home-description {
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    color: var(--text-primary) !important;
+    max-width: 800px !important;
+}
+
+/* About section specific styles */
+.about-description {
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    color: var(--text-primary) !important;
+    max-width: 900px !important;
+    line-height: 1.8 !important;
+}
+
 #contact .container {
     text-align: center;
 }
@@ -111,6 +135,183 @@ section p {
     text-align: left;
     font-size: 1rem;
     margin-bottom: 0;
+}
+
+/* Service content styles */
+.service-content {
+    padding: 1rem 0 1.5rem;
+}
+
+.service-content h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--highlight-color);
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.service-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--highlight-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Performance section styles */
+.performance-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.highlight-item {
+    text-align: center;
+    padding: 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px var(--shadow-color);
+}
+
+.highlight-item h3 {
+    font-size: 1.4rem;
+    color: var(--highlight-color);
+    margin-bottom: 1rem;
+}
+
+.highlight-item p {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.why-jdup {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.why-jdup h3 {
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.why-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.why-item {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    transition: background 0.3s ease;
+}
+
+.why-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.why-item h4 {
+    font-size: 1.2rem;
+    color: var(--highlight-color);
+    margin-bottom: 0.8rem;
+}
+
+.why-item p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+    text-align: center;
+}
+
+
+/* Vision and Mission modal styles */
+.vision-mission-content {
+    text-align: left;
+}
+
+.modal-image {
+    width: 100%;
+    max-width: 300px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin: 0 auto 1.5rem auto;
+    display: block;
+}
+
+.vision-section, .mission-section {
+    margin-bottom: 1.2rem;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+}
+
+.vision-section h3, .mission-section h3 {
+    font-size: 1.3rem;
+    color: var(--highlight-color);
+    margin-bottom: 0.8rem;
+}
+
+.vision-section p, .mission-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Values modal styles */
+.values-content {
+    text-align: left;
+}
+
+.value-item {
+    margin-bottom: 1.2rem;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+}
+
+.value-item h3 {
+    font-size: 1.2rem;
+    color: var(--highlight-color);
+    margin-bottom: 0.6rem;
+}
+
+.value-item p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin: 0;
 }
 
 .service-image {
@@ -263,4 +464,56 @@ section p {
 
 .about-card:hover .card-cta {
     color: var(--highlight-color);
+}
+
+/* --- Theme Switcher --- */
+.theme-switcher-container {
+    /* Remove absolute positioning - now handled by flexbox */
+    margin-left: 1rem;
+}
+
+.theme-switcher {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+.theme-switcher:hover {
+    box-shadow: 0 0 10px var(--highlight-color);
+}
+
+.theme-switcher .sun-icon,
+.theme-switcher .moon-icon {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.theme-switcher .moon-icon {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.theme-switcher .sun-icon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dark Mode Styles for Switcher */
+body.dark-mode .theme-switcher .sun-icon {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+body.dark-mode .theme-switcher .moon-icon {
+    opacity: 1;
+    transform: translateY(0);
 }

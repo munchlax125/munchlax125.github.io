@@ -7,13 +7,13 @@ header#page-top {
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     transition: all 0.3s ease;
 }
 
 header#page-top.scrolled {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: var(--scrolled-header-bg);
+    box-shadow: 0 4px 15px var(--scrolled-header-shadow);
 }
 
 header .container {
@@ -21,6 +21,13 @@ header .container {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+/* Navigation and theme switcher group */
+header .nav-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .logo {
@@ -41,9 +48,16 @@ header .container {
     margin-right: 0.5em;
 }
 
+header .nav {
+    /* margin-left: auto; Removed as justify-content: space-between handles it */
+    /* display: flex; Removed as nav is not a flex container anymore for its children */
+    /* align-items: center; Removed */
+}
+
 header .nav ul {
     list-style: none;
     display: flex;
+    /* margin-right: 25px; Removed as theme switcher is now outside nav */
 }
 
 header .nav li {
@@ -77,6 +91,12 @@ header .nav a:hover {
 header .nav a:hover::after {
     width: 100%;
 }
+
+/* Theme switcher positioning - now handled by header .container flexbox */
+.theme-switcher-container {
+    /* Removed previous positioning styles */
+}
+
 
 /* --- Mobile Navigation --- */
 .nav-toggle {
@@ -114,7 +134,7 @@ header .nav a:hover::after {
 
 /* --- Sections --- */
 main {
-    padding-top: 120px;
+    padding-top: 100px;
 }
 section {
     padding: 4rem 0;

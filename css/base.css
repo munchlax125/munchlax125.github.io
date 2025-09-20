@@ -12,6 +12,10 @@
     --bg-color: #F0F4F8;
     --neumorph-shadow-light: rgba(255, 255, 255, 0.8);
     --neumorph-shadow-dark: #d1d9e6;
+
+    /* Scrolled Header */
+    --scrolled-header-bg: rgba(255, 255, 255, 0.95);
+    --scrolled-header-shadow: rgba(0,0,0,0.1);
 }
 
 * {

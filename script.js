@@ -1,6 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("jdup website loaded.");
-    lucide.createIcons(); // Render Lucide icons
+    // --- Theme Switcher Logic ---
+    const themeSwitcher = document.getElementById('theme-switcher');
+    const body = document.body;
+
+    // Function to apply the saved theme on page load
+    const applyTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+        }
+        // Re-render icons after potential DOM changes from theme application
+        lucide.createIcons();
+    };
+
+    // Function to toggle the theme
+    const toggleTheme = () => {
+        body.classList.toggle('dark-mode');
+        // Save the user's preference to localStorage
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    };
+
+    // Add event listener to the theme switcher button
+    if (themeSwitcher) {
+        themeSwitcher.addEventListener('click', toggleTheme);
+    }
+
+    // Apply the theme when the DOM is loaded
+    applyTheme();
     Chart.register(ChartDataLabels);
 
     // --- Header Scroll Effect ---
@@ -49,62 +80,105 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 문의하기 팝업(모달) 관련 코드 ---
-    const contactModal = document.getElementById('contact-modal');
-    const openContactModalBtn = document.getElementById('open-contact-modal');
-    const closeContactModalBtn = contactModal.querySelector('.close-button');
-    const contactForm = document.getElementById('contact-form');
-    const formContainer = document.getElementById('form-container');
-    const thankYouMessage = document.getElementById('thank-you-message');
+    // --- Modal Handling ---
+    function initializeModal(modalId, openBtnId, closeBtnSelector) {
+        const modal = document.getElementById(modalId);
+        const openBtn = document.getElementById(openBtnId);
+        const closeBtn = modal ? modal.querySelector(closeBtnSelector) : null;
 
-    if (contactModal && openContactModalBtn && closeContactModalBtn && contactForm) {
-        openContactModalBtn.addEventListener('click', () => { contactModal.style.display = 'flex'; });
-        closeContactModalBtn.addEventListener('click', () => { contactModal.style.display = 'none'; });
-        window.addEventListener('click', (e) => { if (e.target == contactModal) { contactModal.style.display = 'none'; } });
+        if (!modal || !openBtn || !closeBtn) {
+            // console.warn(`Modal components not found for: ${modalId}`);
+            return;
+        }
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            if(formContainer && thankYouMessage){
-                formContainer.style.display = 'none';
-                thankYouMessage.style.display = 'block';
+        const openModal = () => modal.style.display = 'flex';
+        const closeModal = () => modal.style.display = 'none';
+
+        openBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+
+        // Function to handle clicks/taps outside the modal content
+        const handleOutsideClick = (event) => {
+            // Check if the click is on the modal background itself (not on its children)
+            if (event.target === modal) {
+                closeModal();
             }
-            setTimeout(() => {
-                contactModal.style.display = 'none';
-                if(formContainer && thankYouMessage){
-                    formContainer.style.display = 'block';
-                    thankYouMessage.style.display = 'none';
-                    contactForm.reset();
-                }
-            }, 3000);
-        });
+        };
+
+        // Use 'mousedown' for desktop and 'touchend' for mobile to avoid conflicts
+        window.addEventListener('click', handleOutsideClick);
+        window.addEventListener('touchend', handleOutsideClick);
+
+        return { modal, openBtn, closeBtn, closeModal };
     }
 
-    // --- 개인정보처리방침 팝업(모달) 관련 코드 ---
-    const privacyModal = document.getElementById('privacy-policy-modal');
-    const openPrivacyModalBtn = document.getElementById('open-privacy-policy');
-    const closePrivacyModalBtn = privacyModal.querySelector('.privacy-close');
+    // Initialize all modals
+    const contactModalData = initializeModal('contact-modal', 'open-contact-modal', '.close-button');
+    initializeModal('privacy-policy-modal', 'open-privacy-policy', '.privacy-close');
+    initializeModal('vision-modal', 'open-vision-modal', '.vision-close');
+    initializeModal('values-modal', 'open-values-modal', '.values-close');
 
-    if (privacyModal && openPrivacyModalBtn && closePrivacyModalBtn) {
-        openPrivacyModalBtn.addEventListener('click', () => { privacyModal.style.display = 'flex'; });
-        closePrivacyModalBtn.addEventListener('click', () => { privacyModal.style.display = 'none'; });
-        window.addEventListener('click', (e) => { if (e.target == privacyModal) { privacyModal.style.display = 'none'; } });
+    // --- Specific logic for Contact Form ---
+    if (contactModalData) {
+        const contactForm = document.getElementById('contact-form');
+        const formContainer = document.getElementById('form-container');
+        const thankYouMessage = document.getElementById('thank-you-message');
+
+        if (contactForm && formContainer && thankYouMessage) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                formContainer.style.display = 'none';
+                thankYouMessage.style.display = 'block';
+
+                setTimeout(() => {
+                    contactModalData.closeModal(); // Use the returned closeModal function
+                    // Reset form state after modal is closed
+                    setTimeout(() => {
+                        formContainer.style.display = 'block';
+                        thankYouMessage.style.display = 'none';
+                        contactForm.reset();
+                    }, 500); // Delay to ensure modal is hidden before reset
+                }, 3000);
+            });
+        }
     }
 
     // --- 서비스 섹션 아코디언 관련 코드 ---
     const accordionHeaders = document.querySelectorAll('.accordion-header');
     accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
+        header.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
             const currentlyActive = document.querySelector('.accordion-header.active');
-            if (currentlyActive && currentlyActive !== this) {
-                currentlyActive.classList.remove('active');
-                currentlyActive.nextElementSibling.style.maxHeight = null;
-            }
-            this.classList.toggle('active');
             const content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
+            const isCurrentlyActive = this.classList.contains('active');
+            
+            // Close all other accordions
+            accordionHeaders.forEach(otherHeader => {
+                if (otherHeader !== this) {
+                    otherHeader.classList.remove('active');
+                    const otherContent = otherHeader.nextElementSibling;
+                    if (otherContent) {
+                        otherContent.style.maxHeight = null;
+                    }
+                }
+            });
+            
+            // Toggle current accordion
+            if (isCurrentlyActive) {
+                this.classList.remove('active');
+                if (content) {
+                    content.style.maxHeight = null;
+                }
             } else {
-                content.style.maxHeight = content.scrollHeight + "px";
+                this.classList.add('active');
+                if (content) {
+                    // Force reflow to get accurate scrollHeight
+                    content.style.maxHeight = '0px';
+                    const scrollHeight = content.scrollHeight;
+                    content.style.maxHeight = scrollHeight + "px";
+                }
             }
         });
     });
@@ -153,17 +227,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const chart = new Chart(performanceChartCtx, {
             type: 'bar',
             data: {
-                labels: ['업무 효율성', '수작업 비용'],
+                labels: ['협업 생산성', '고객 유입', '의사결정 속도'],
                 datasets: [{
                     label: '도입 전',
-                    data: [40, 85],
+                    data: [40, 35, 30],
                     backgroundColor: 'rgba(255, 99, 132, 0.5)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1,
                     maxBarThickness: settings.barThickness
                 }, {
-                    label: 'jdup 도입 후',
-                    data: [95, 15],
+                    label: 'JDUP 도입 후',
+                    data: [95, 85, 90],
                     backgroundColor: 'rgba(54, 162, 235, 0.5)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1,
@@ -199,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 let label = context.dataset.label || '';
                                 if (label) { label += ': '; }
                                 if (context.parsed.y !== null) {
-                                    label += context.parsed.y + (context.label === '업무 효율성' ? '%' : '만원');
+                                    label += context.parsed.y + '%';
                                 }
                                 return label;
                             }
@@ -210,13 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         align: 'top',
                         offset: settings.datalabelOffset,
                         formatter: (value, context) => {
-                            const label = context.chart.data.labels[context.dataIndex];
-                            if (label === '업무 효율성') {
-                                return value + '%';
-                            } else if (label === '수작업 비용') {
-                                return value + '만원';
-                            }
-                            return value;
+                            return value + '%';
                         },
                         color: '#333',
                         font: { 
@@ -333,25 +401,5 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // --- Vision Modal ---
-    const visionModal = document.getElementById('vision-modal');
-    const openVisionModalBtn = document.getElementById('open-vision-modal');
-    const closeVisionModalBtn = visionModal.querySelector('.vision-close');
-
-    if (visionModal && openVisionModalBtn && closeVisionModalBtn) {
-        openVisionModalBtn.addEventListener('click', () => { visionModal.style.display = 'flex'; });
-        closeVisionModalBtn.addEventListener('click', () => { visionModal.style.display = 'none'; });
-        window.addEventListener('click', (e) => { if (e.target == visionModal) { visionModal.style.display = 'none'; } });
-    }
-
-    // --- Values Modal ---
-    const valuesModal = document.getElementById('values-modal');
-    const openValuesModalBtn = document.getElementById('open-values-modal');
-    const closeValuesModalBtn = valuesModal.querySelector('.values-close');
-
-    if (valuesModal && openValuesModalBtn && closeValuesModalBtn) {
-        openValuesModalBtn.addEventListener('click', () => { valuesModal.style.display = 'flex'; });
-        closeValuesModalBtn.addEventListener('click', () => { valuesModal.style.display = 'none'; });
-        window.addEventListener('click', (e) => { if (e.target == valuesModal) { valuesModal.style.display = 'none'; } });
-    }
+    
 });
