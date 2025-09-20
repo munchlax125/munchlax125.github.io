@@ -161,11 +161,34 @@ function showNotification(message, type) {
     }, 3000);
 }
 
-// 모바일 메뉴 토글 (필요시)
-function toggleMobileMenu() {
-    const navMenu = document.querySelector('.nav-menu');
+// 모바일 메뉴 토글
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
-}
+    const icon = navToggle.querySelector('i');
+    if (navMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        navToggle.setAttribute('aria-label', '메뉴 닫기');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        navToggle.setAttribute('aria-label', '메뉴 열기');
+    }
+});
+
+// 모바일 메뉴 링크 클릭 시 메뉴 닫기
+navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        const icon = navToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        navToggle.setAttribute('aria-label', '메뉴 열기');
+    });
+});
 
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', function() {
