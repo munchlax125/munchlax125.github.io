@@ -3,345 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JDUP (제이디업)</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="JDUP (제이디업)">
-    <meta property="og:description" content="혁신적인 IT 솔루션을 제공하는 JDUP 입니다.">
-    <meta property="og:image" content="favicon.png"> <!-- For best results, use a 1200x630px image -->
-    <meta property="og:url" content="">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/dark-theme.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>병의원 전문 세무사 | 안정적인 세무 관리의 파트너</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header id="page-top" class="glass-header">
-        <div class="container">
-            <h1 class="logo">
-                <a href="#page-top" class="logo-link">
-                    <img src="favicon.png" alt="JDUP Logo" class="logo-icon">
-                    JDUP (제이디업)
-                </a>
-            </h1>
-            <div class="nav-group">
-                <button class="nav-toggle" aria-label="toggle navigation">
-                    <span class="hamburger"></span>
-                </button>
-                <nav class="nav">
-                    <ul>
-                        <li><a href="#page-top">홈</a></li>
-                        <li><a href="#about">회사소개</a></li>
-                        <li><a href="#services">서비스</a></li>
-                        <li><a href="#performance">성과</a></li>
-                        <li><a href="#contact">연락처</a></li>
-                    </ul>
-                </nav>
-                <div class="theme-switcher-container">
-                    <button id="theme-switcher" class="theme-switcher" aria-label="Toggle dark mode">
-                        <i data-lucide="sun" class="sun-icon"></i>
-                        <i data-lucide="moon" class="moon-icon"></i>
-                    </button>
+    <!-- 헤더 -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-calculator"></i>
+                    <span>병의원 세무 전문</span>
                 </div>
+                <ul class="nav-menu">
+                    <li><a href="#contact">무료상담</a></li>
+                    <li><a href="#intro">세무사 소개</a></li>
+                    <li><a href="#services">서비스</a></li>
+                    <li><a href="#competency">핵심역량</a></li>
+                    <li><a href="#clients">고객 현황</a></li>
+                </ul>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <main>
-        <section id="home">
-            <div class="container">
-                <h2 class="reveal-on-scroll">혁신적인 구글 솔루션을 제공하는 JDUP</h2>
-                <p class="reveal-on-scroll home-subtitle">구글 생태계와 함께 성장하는 최고의 소프트웨어 개발사</p>
-                <p class="reveal-on-scroll home-description">JDUP은 Google Workspace부터 Cloud, Firebase, BigQuery까지, 비즈니스 혁신의 전 과정을 책임지는 파트너입니다.</p>
-            </div>
-        </section>
-
-        <section id="about">
-            <div class="container">
-                <h2 class="reveal-on-scroll">기술로 더 나은 세상을 만든다</h2>
-                <p class="reveal-on-scroll about-description">JDUP은 단순한 소프트웨어 개발사가 아니라, 구글 기반 디지털 트랜스포메이션 전문 기업입니다.<br>우리는 고객이 구글의 최신 기술을 활용해 더 빠르고 더 효율적으로 성장하도록 돕습니다.</p>
-                <div class="about-cards-container">
-                    <div id="open-vision-modal" class="about-card glass-card reveal-on-scroll">
-                        <h3>비전과 미션</h3>
-                        <p>기술로 더 나은 세상을 만듭니다.</p>
-                        <span class="card-cta">더 알아보기 &rarr;</span>
+    <!-- 메인 히어로 섹션 -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>병의원 전문 세무사</h1>
+                <p class="hero-subtitle">의료진의 진료에만 집중할 수 있도록<br>안정적인 세무 관리를 책임집니다</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">병의원 고객</span>
                     </div>
-                    <div id="open-values-modal" class="about-card glass-card reveal-on-scroll">
-                        <h3>핵심 가치</h3>
-                        <p>우리가 일하는 방식.</p>
-                        <span class="card-cta">더 알아보기 &rarr;</span>
+                    <div class="stat">
+                        <span class="stat-number">15년</span>
+                        <span class="stat-label">의료업계 경험</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">세무 안정성</span>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="services">
-            <div class="container">
-                <h2 class="reveal-on-scroll">제공 서비스</h2>
-                <div class="accordion">
-                    <div class="accordion-item glass-card reveal-on-scroll">
-                        <button class="accordion-header">
-                            <span class="service-icon"><i data-lucide="code-2"></i></span>
-                            <span>웹사이트 개발</span>
-                        </button>
-                        <div class="accordion-content">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" alt="웹사이트 개발 - 구글 애널리틱스 연동" class="service-image">
-                            <div class="service-content">
-                                <h4>구글 기반 웹사이트 개발</h4>
-                                <ul class="service-features">
-                                    <li>구글 애널리틱스, 구글 태그 매니저, Search Console 연동</li>
-                                    <li>SEO 최적화와 Google Ads·YouTube 마케팅까지 고려한 사이트 구축</li>
-                                    <li>글로벌 표준 UX/UI로 직관적이고 강력한 사용자 경험 제공</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item glass-card reveal-on-scroll">
-                        <button class="accordion-header">
-                            <span class="service-icon"><i data-lucide="smartphone"></i></span>
-                            <span>모바일 앱 개발</span>
-                        </button>
-                        <div class="accordion-content">
-                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="모바일 앱 개발 - Firebase 기반" class="service-image">
-                            <div class="service-content">
-                                <h4>Firebase 기반 모바일 앱 개발</h4>
-                                <ul class="service-features">
-                                    <li>Firebase 기반 실시간 데이터 관리, 사용자 분석, 푸시 알림</li>
-                                    <li>Google Play 스토어 최적화(ASO) 지원</li>
-                                    <li>iOS/Android 동시 개발 및 구글 API 연동</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item glass-card reveal-on-scroll">
-                        <button class="accordion-header">
-                            <span class="service-icon"><i data-lucide="bar-chart-2"></i></span>
-                            <span>IT 컨설팅</span>
-                        </button>
-                        <div class="accordion-content">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="IT 컨설팅 - 구글 워크스페이스" class="service-image">
-                            <div class="service-content">
-                                <h4>구글 기반 IT 컨설팅</h4>
-                                <ul class="service-features">
-                                    <li>Google Workspace(Gmail, Drive, Meet, Chat) 도입 및 전환 컨설팅</li>
-                                    <li>Google Cloud, BigQuery 기반 데이터 분석·자동화 전략 수립</li>
-                                    <li>Google Ads, YouTube 광고 캠페인 최적화 컨설팅</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item glass-card reveal-on-scroll">
-                        <button class="accordion-header">
-                            <span class="service-icon"><i data-lucide="workflow"></i></span>
-                            <span>시스템 통합 (SI)</span>
-                        </button>
-                        <div class="accordion-content">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="시스템 통합 - 구글 클라우드 플랫폼" class="service-image">
-                            <div class="service-content">
-                                <h4>구글 클라우드 기반 시스템 통합</h4>
-                                <ul class="service-features">
-                                    <li>분산된 데이터를 Google Cloud Platform으로 통합</li>
-                                    <li>기업 내부 시스템과 Google Workspace 협업 툴 연계</li>
-                                    <li>자동화된 업무 프로세스로 운영 효율성 극대화</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="performance">
-            <div class="container">
-                <h2 class="reveal-on-scroll">JDUP 도입 성과</h2>
-                <p class="section-subtitle reveal-on-scroll">JDUP 솔루션으로 고객사는 다음과 같은 성과를 경험합니다.</p>
-                
-                <div class="performance-highlights reveal-on-scroll">
-                    <div class="highlight-item">
-                        <h3>업무 혁신</h3>
-                        <p>Google Workspace 기반 협업 생산성 <strong>30% 이상</strong> 향상</p>
-                    </div>
-                    <div class="highlight-item">
-                        <h3>매출 성장</h3>
-                        <p>Google Ads + YouTube 최적화로 <strong>신규 고객 유입</strong> 극대화</p>
-                    </div>
-                    <div class="highlight-item">
-                        <h3>데이터 자산화</h3>
-                        <p>BigQuery 분석 기반 <strong>경영 의사결정</strong> 고도화</p>
-                    </div>
-                </div>
-
-                <div class="why-jdup reveal-on-scroll">
-                    <h3>왜 JDUP인가?</h3>
-                    <div class="why-items">
-                        <div class="why-item">
-                            <h4>구글 전문성</h4>
-                            <p>Workspace, Cloud, Firebase, BigQuery, Ads 전 영역 지원</p>
-                        </div>
-                        <div class="why-item">
-                            <h4>다양한 성공 사례</h4>
-                            <p>스타트업부터 글로벌 기업까지 검증된 프로젝트 경험</p>
-                        </div>
-                        <div class="why-item">
-                            <h4>철저한 사후관리</h4>
-                            <p>클라우드 보안 업데이트, 협업툴 운영 지원, 정기 개선</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="chart-container glass-card reveal-on-scroll">
-                    <canvas id="performanceChart" aria-label="JDUP 도입 성과 차트: 업무 효율성 및 수작업 비용 비교"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="container">
-                <h2 class="reveal-on-scroll">연락처</h2>
-                <p class="reveal-on-scroll">궁금한 점이 있으신가요? 아래 버튼을 눌러 문의해주세요.</p>
-                <button id="open-contact-modal" class="contact-button reveal-on-scroll">문의하기</button>
-            </div>
-        </section>
-    </main>
-
-    <div id="contact-modal" class="modal">
-        <div class="modal-content">
-            <div id="form-container">
-                <span class="close-button">&times;</span>
-                <h2>문의하기</h2>
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">이름</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">이메일</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">문의내용</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">제출</button>
-                </form>
-            </div>
-            <div id="thank-you-message" style="display: none;">
-                <h2>문의해주셔서 감사합니다.</h2>
-                <p>빠른 시일 내에 회신드리겠습니다.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="privacy-policy-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button privacy-close">&times;</span>
-            <h2>개인정보처리방침</h2>
-            <div class="privacy-content">
-                <h3>JDUP 개인정보처리방침</h3>
-                <p>JDUP(이하 "회사")는 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 개인정보보호법 등 관련 법규상의 개인정보보호 규정을 준수하며, 개인정보처리방침을 제정하여 이용자의 권익 보호에 최선을 다하고 있습니다.</p>
-
-                <p><strong>제1조 (개인정보의 수집 및 이용 목적)</strong><br>JDUP(이하 "회사")는 다음의 목적을 위하여 개인정보를 처리합니다.</p>
-                <ul>
-                    <li>문의사항 처리: 서비스 이용 문의, 제휴 문의 등 고객의 문의사항에 대한 응대 및 처리</li>
-                    <li>서비스 개선 및 신규 서비스 개발: 이용자의 서비스 이용에 대한 통계 분석, 서비스 개선 및 신규 서비스 개발</li>
-                </ul>
-
-                <p><strong>제2조 (수집하는 개인정보의 항목)</strong><br>회사는 문의하기 기능을 통해 다음의 개인정보를 수집하고 있습니다.</p>
-                <ul>
-                    <li>필수항목: 이름, 이메일 주소</li>
-                    <li>선택항목: 문의 내용 (이용자가 자발적으로 제공하는 경우)</li>
-                </ul>
-
-                <p><strong>제3조 (개인정보의 보유 및 이용기간)</strong><br>회사는 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의 받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.</p>
-                <ul>
-                    <li>문의사항: 문의 처리 완료 후 3개월 (단, 관련 법령에 따라 보존할 필요가 있는 경우 해당 법령에서 정한 기간 동안 보존)</li>
-                </ul>
-
-                <p><strong>제4조 (개인정보의 제3자 제공)</strong><br>회사는 이용자의 개인정보를 제1조에서 명시한 범위 내에서만 처리하며, 정보주체의 동의, 법률의 특별한 규정 등 개인정보보호법 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.</p>
-
-                <p><strong>제5조 (개인정보 처리 위탁)</strong><br>회사는 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다.</p>
-                <ul>
-                    <li>위탁받는 자 (수탁업체): 웹호스팅 업체</li>
-                    <li>위탁하는 업무 내용: 웹사이트 시스템 관리 및 유지보수</li>
-                </ul>
-                <p>회사는 위탁계약 체결 시 개인정보보호법 제26조에 따라 위탁업무 수행 목적 외 개인정보 처리 금지, 기술적·관리적 보호조치, 재위탁 제한, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁업체가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.</p>
-
-                <p><strong>제6조 (정보주체 및 법정대리인의 권리·의무 및 그 행사방법)</strong><br>이용자는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다.</p>
-                <ul>
-                    <li>개인정보 열람 요구, 오류 등이 있을 경우 정정 요구, 삭제 요구, 처리정지 요구</li>
-                </ul>
-                <p>위 권리 행사는 회사에 대해 서면, 전화, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며 회사는 이에 대해 지체 없이 조치하겠습니다.</p>
-
-                <p><strong>제7조 (개인정보 자동 수집 장치의 설치·운영 및 거부에 관한 사항)</strong><br>회사는 이용자에게 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 '쿠키(cookie)'를 사용하지 않습니다.</p>
-
-                <p><strong>제8조 (개인정보 보호책임자)</strong><br>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
-                <ul>
-                    <li>개인정보 보호책임자: JDUP 개인정보보호담당자</li>
-                    <li>연락처: privacy@jdup.co.kr, 02-1234-5678</li>
-                </ul>
-
-                <p><strong>제9조 (개인정보 처리방침 변경)</strong><br>이 개인정보처리방침은 2024년 1월 1일부터 적용됩니다. 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항 시행 7일 전부터 웹사이트 공지사항을 통하여 고지할 것입니다.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Vision Modal -->
-    <div id="vision-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button vision-close">&times;</span>
-            <h2>비전과 미션</h2>
-            <div class="privacy-content"> <!-- Reusing privacy-content for scrollable text -->
-                <div class="vision-mission-content">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="비전과 미션" class="modal-image">
-                    <div class="vision-section">
-                        <h3>비전</h3>
-                        <p>구글 플랫폼을 기반으로 기업의 미래 경쟁력을 강화하는 혁신 허브</p>
-                    </div>
-                    <div class="mission-section">
-                        <h3>미션</h3>
-                        <p>Google Workspace, Google Cloud, Firebase, BigQuery 등 구글 핵심 기술을 고객 맞춤형으로 제공하여 지속 가능한 성과 창출</p>
-                    </div>
+            <div class="hero-image">
+                <div class="medical-icon">
+                    <i class="fas fa-user-md"></i>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Values Modal -->
-    <div id="values-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button values-close">&times;</span>
-            <h2>핵심 가치</h2>
-            <div class="privacy-content">
-                <div class="values-content">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="핵심 가치" class="modal-image">
-                    <div class="value-item">
-                        <h3>혁신 (Innovation)</h3>
-                        <p>Google AI, Cloud, BigQuery, Firebase를 기반으로 한 최신 기술 적용</p>
-                    </div>
-                    <div class="value-item">
-                        <h3>신뢰 (Trust)</h3>
-                        <p>투명한 소통과 명확한 계약 구조</p>
-                    </div>
-                    <div class="value-item">
-                        <h3>성장 (Growth)</h3>
-                        <p>Google Workspace 협업 환경과 통합 서비스 제공을 통한 고객 성장 가속화</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
+    <!-- 무료상담 섹션 -->
+    <section id="contact" class="contact">
         <div class="container">
-            <p>회사명: 주식회사 제이디업 (JDUP) | 대표: 전하린 | 사업자등록번호: 646-88-01628</p>
-            <p>주소: 서울특별시 강남구 테헤란로 151 | <button id="open-privacy-policy" class="footer-button">개인정보처리방침</button></p>
+            <div class="section-header">
+                <h2>무료상담</h2>
+                <p>안정적인 세무 관리의 첫 걸음을 함께 시작하세요</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>전화 문의</h4>
+                            <p>02-1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>이메일</h4>
+                            <p>info@medicaltax.co.kr</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>사무실</h4>
+                            <p>서울시 강남구 테헤란로 123</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="병원명" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="담당자명" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="연락처" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">관심 서비스 선택</option>
+                                <option value="hospital">병의원 기장</option>
+                                <option value="dental">치과 기장</option>
+                                <option value="consulting">컨설팅</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="문의 내용" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">무료상담 요청</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 세무사 소개 섹션 -->
+    <section id="intro" class="intro">
+        <div class="container">
+            <div class="section-header">
+                <h2>세무사 소개</h2>
+                <p>의료업계 전문성을 바탕으로 한 신뢰할 수 있는 세무 파트너</p>
+            </div>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <div class="intro-card">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>전문 자격</h3>
+                        <ul>
+                            <li>공인회계사 (CPA)</li>
+                            <li>세무사 (CTA)</li>
+                            <li>의료기관 경영 컨설턴트</li>
+                        </ul>
+                    </div>
+                    <div class="intro-card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>경력 및 전문성</h3>
+                        <ul>
+                            <li>15년간 의료업계 세무 경험</li>
+                            <li>대형병원부터 개인병원까지 다양한 규모 경험</li>
+                            <li>의료법, 의료기기법 등 의료 관련 법규 전문</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="intro-profile">
+                    <div class="profile-card">
+                        <div class="profile-image">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>김세무 세무사</h3>
+                        <p class="profile-title">병의원 전문 세무사</p>
+                        <p class="profile-desc">
+                            "의료진은 환자 치료에만 집중하세요. 
+                            세무는 저희가 책임지겠습니다."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 서비스 섹션 -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>전문 서비스</h2>
+                <p>의료업계 특성을 완벽히 이해한 맞춤형 세무 서비스</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3>병의원 기장</h3>
+                    <ul>
+                        <li>일반의료기관 전표 정리</li>
+                        <li>의료수입 및 비용 관리</li>
+                        <li>의료기기 구매/임대 관리</li>
+                        <li>의료진 급여 관리</li>
+                        <li>월별 재무제표 작성</li>
+                    </ul>
+                    <div class="service-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        의료법 준수 기장
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3>치과 기장</h3>
+                    <ul>
+                        <li>치과 전용 계정과목 관리</li>
+                        <li>임플란트, 교정비 관리</li>
+                        <li>치과기기 구매/임대 관리</li>
+                        <li>치과의사 급여 관리</li>
+                        <li>치과 특화 세무 처리</li>
+                    </ul>
+                    <div class="service-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        치과업계 특화 기장
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>컨설팅</h3>
+                    <ul>
+                        <li>의료기관 경영진단</li>
+                        <li>세무 최적화 방안</li>
+                        <li>의료기기 구매 전략</li>
+                        <li>의료진 인센티브 설계</li>
+                        <li>법인 설립/변경 컨설팅</li>
+                    </ul>
+                    <div class="service-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        맞춤형 경영 컨설팅
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 핵심역량 섹션 -->
+    <section id="competency" class="competency">
+        <div class="container">
+            <div class="section-header">
+                <h2>핵심역량</h2>
+                <p>의료업계 전문성과 세무 전문성을 결합한 차별화된 서비스</p>
+            </div>
+            <div class="competency-grid">
+                <div class="competency-item">
+                    <div class="competency-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>세무 안정성</h3>
+                    <p>15년간 단 한 건의 세무 문제 없이 안정적인 세무 관리</p>
+                </div>
+                <div class="competency-item">
+                    <div class="competency-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>의료업계 전문성</h3>
+                    <p>의료법, 의료기기법 등 의료 관련 모든 법규 완벽 숙지</p>
+                </div>
+                <div class="competency-item">
+                    <div class="competency-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>신속한 처리</h3>
+                    <p>24시간 내 전표 처리, 월말 3일 전 재무제표 완성</p>
+                </div>
+                <div class="competency-item">
+                    <div class="competency-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>맞춤형 서비스</h3>
+                    <p>병원 규모와 특성에 맞는 개별 맞춤형 세무 서비스</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 고객 현황 섹션 -->
+    <section id="clients" class="clients">
+        <div class="container">
+            <div class="section-header">
+                <h2>고객 현황</h2>
+                <p>신뢰받는 파트너로 함께하는 의료기관들</p>
+            </div>
+            <div class="clients-content">
+                <div class="clients-stats">
+                    <div class="client-stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">현재 고객사</span>
+                    </div>
+                    <div class="client-stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">고객 만족도</span>
+                    </div>
+                    <div class="client-stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">세무 안정성</span>
+                    </div>
+                </div>
+                <div class="clients-testimonials">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"세무 걱정 없이 환자 치료에만 집중할 수 있게 되었습니다. 
+                            의료업계 특성을 완벽히 이해하고 있어서 정말 안심됩니다."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>○○병원 원장</strong>
+                            <span>내과 전문의</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"치과 특화 기장으로 임플란트, 교정비 관리가 훨씬 체계적으로 
+                            되었고, 세무 부담도 크게 줄었습니다."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>○○치과 원장</strong>
+                            <span>치과 전문의</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clients-types">
+                    <h3>고객 유형</h3>
+                    <div class="client-types-grid">
+                        <div class="client-type">
+                            <i class="fas fa-hospital"></i>
+                            <span>종합병원</span>
+                        </div>
+                        <div class="client-type">
+                            <i class="fas fa-clinic-medical"></i>
+                            <span>개인병원</span>
+                        </div>
+                        <div class="client-type">
+                            <i class="fas fa-tooth"></i>
+                            <span>치과</span>
+                        </div>
+                        <div class="client-type">
+                            <i class="fas fa-eye"></i>
+                            <span>안과</span>
+                        </div>
+                        <div class="client-type">
+                            <i class="fas fa-baby"></i>
+                            <span>소아과</span>
+                        </div>
+                        <div class="client-type">
+                            <i class="fas fa-heart"></i>
+                            <span>내과</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>대표: OOO | 사업자등록번호: OOO-OO-OOOOO</p>
+                    <p>주소: OOO시 OOO구 OOO로 OOO</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="카카오톡"><i class="fas fa-comment"></i></a>
+                    <a href="#" aria-label="네이버 블로그"><i class="fas fa-blog"></i></a>
+                    <a href="#" aria-label="유튜브"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright 2025 세무법인BHL co,Ltd. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
